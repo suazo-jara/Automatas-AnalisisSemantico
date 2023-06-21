@@ -1,7 +1,6 @@
 package ANTLR;
 
-// Generated from ParserT.g4 by ANTLR 4.4
-import org.antlr.v4.runtime.misc.NotNull;
+// Generated from ParserT.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -19,194 +18,194 @@ public class ParserTBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitInstrucciones(@NotNull ParserTParser.InstruccionesContext ctx) { return visitChildren(ctx); }
+	@Override public T visitProgram(ParserTParser.ProgramContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSuma(@NotNull ParserTParser.SumaContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInstrucciones(ParserTParser.InstruccionesContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSenlogica(@NotNull ParserTParser.SenlogicaContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInstruccion(ParserTParser.InstruccionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitCos(@NotNull ParserTParser.CosContext ctx) { return visitChildren(ctx); }
+	@Override public T visitOperacion(ParserTParser.OperacionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitProgram(@NotNull ParserTParser.ProgramContext ctx) { return visitChildren(ctx); }
+	@Override public T visitOperador(ParserTParser.OperadorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOperacion(@NotNull ParserTParser.OperacionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitOrden(ParserTParser.OrdenContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitImpresion(@NotNull ParserTParser.ImpresionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSentido(ParserTParser.SentidoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitInstruccion(@NotNull ParserTParser.InstruccionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDistancia(ParserTParser.DistanciaContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDivision(@NotNull ParserTParser.DivisionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLectura(ParserTParser.LecturaContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSqrt(@NotNull ParserTParser.SqrtContext ctx) { return visitChildren(ctx); }
+	@Override public T visitImpresion(ParserTParser.ImpresionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSentido(@NotNull ParserTParser.SentidoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCiclo(ParserTParser.CicloContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSi(@NotNull ParserTParser.SiContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFuncion(ParserTParser.FuncionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMenor(@NotNull ParserTParser.MenorContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSi(ParserTParser.SiContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAfirmacion(@NotNull ParserTParser.AfirmacionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMientras(ParserTParser.MientrasContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMientras(@NotNull ParserTParser.MientrasContext ctx) { return visitChildren(ctx); }
+	@Override public T visitHacermientras(ParserTParser.HacermientrasContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOrden(@NotNull ParserTParser.OrdenContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSenlogica(ParserTParser.SenlogicaContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFuncion(@NotNull ParserTParser.FuncionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAfirmacion(ParserTParser.AfirmacionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExp(@NotNull ParserTParser.ExpContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMayor(ParserTParser.MayorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLectura(@NotNull ParserTParser.LecturaContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMenor(ParserTParser.MenorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMultiplicacion(@NotNull ParserTParser.MultiplicacionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIgual(ParserTParser.IgualContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitCiclo(@NotNull ParserTParser.CicloContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDistinto(ParserTParser.DistintoContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMayor(@NotNull ParserTParser.MayorContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSuma(ParserTParser.SumaContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDistinto(@NotNull ParserTParser.DistintoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitResta(ParserTParser.RestaContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitHacermientras(@NotNull ParserTParser.HacermientrasContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMultiplicacion(ParserTParser.MultiplicacionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDistancia(@NotNull ParserTParser.DistanciaContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDivision(ParserTParser.DivisionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitIgual(@NotNull ParserTParser.IgualContext ctx) { return visitChildren(ctx); }
+	@Override public T visitExp(ParserTParser.ExpContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitResta(@NotNull ParserTParser.RestaContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCos(ParserTParser.CosContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOperador(@NotNull ParserTParser.OperadorContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSqrt(ParserTParser.SqrtContext ctx) { return visitChildren(ctx); }
 }
