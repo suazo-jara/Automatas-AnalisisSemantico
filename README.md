@@ -1,2 +1,1 @@
-# Automatas-AnalisisSemantico
-Entrega final para Autómatas y Compiladores
+# Entrega final: Automatas - Analisis Semántico

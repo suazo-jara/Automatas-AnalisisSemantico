@@ -1,0 +1,22 @@
+bienvenido al gps.
+
+desde tu ubicacion actual, dirigete al este durante 100 metros.
+gira a la derecha en 2 kilometros.
+continua al norte durante 300 metros
+corte camino en 4 hacia 5
+si distancia diferente que 40 metros entonces realice un recorrido de 50 veces alrededor de 6
+sigue recto durante 1.5 kilometros
+pasar cambio en 7 kilometros
+derrapar a 20 metros
+si distancia mayor que 5 kilometros entonces continua al norte durante 200 metros.
+gira a la izquierda en 500 metros.
+derrapar a 100 metros
+mientras distancia mayor que 500 metros conduzca continua al norte durante 300 metros.
+dirigete a la derecha en 2 kilometro o sigue recto durante 300 metros.
+si distancia igual que 1 kilometro entonces continua al norte durante 300 metros.
+gira a la izquierda en 200 metros y continua recto durante 200 metros.
+dirigete al este en 4 kilometros cuando distancia menor que 40 metros
+tomar salida 3 con 20
+acelera 3 metros
+
+has llegado a tu destino.
