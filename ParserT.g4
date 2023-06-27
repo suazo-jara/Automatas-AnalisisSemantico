@@ -3,8 +3,9 @@ import LexerT;
 // Inicio de la gramática
 
 program : BEGINGPS BEGIN instrucciones* END;
-instrucciones:  (instruccion | instruccion operador instruccion | ciclo | operacion);
+instrucciones:  (instruccion | instruccion operador instruccion | ciclo | operacion | declaracion);
 instruccion : orden sentido distancia PUNTO*;
+declaracion: VARNAME 'es' (INT | FLOAT);
 
 operacion : (suma | resta | multiplicacion | division | funcion);
 
@@ -31,10 +32,10 @@ menor : MENOR 'que' INT MEDIDA;
 igual : EQUAL 'que' INT MEDIDA;
 distinto : NOTEQUAL 'que' INT MEDIDA;
 
-suma : 'tomar salida' (INT | FLOAT) 'con' (INT | FLOAT);
-resta : 'corte camino en' (INT | FLOAT) 'hacia' (INT | FLOAT);
-multiplicacion : 'realice un recorrido de' (INT | FLOAT) 'veces alrededor de' (INT | FLOAT);
-division : 'para llegar a' (INT | FLOAT) 'desvia en' (INT | FLOAT);
+suma : VARNAME 'es' 'tomar salida' (INT | FLOAT) 'con' (INT | FLOAT);
+resta : VARNAME 'es' 'corte camino en' (INT | FLOAT) 'hacia' (INT | FLOAT);
+multiplicacion : VARNAME 'es' 'realice un recorrido de' (INT | FLOAT) 'veces alrededor de' (INT | FLOAT);
+division : VARNAME 'es' 'para llegar a' (INT | FLOAT) 'desvia en' (INT | FLOAT);
 
 exp : EXPONENCIAL (INT | FLOAT) MEDIDA;
 cos : COSENO (INT | FLOAT) MEDIDA;

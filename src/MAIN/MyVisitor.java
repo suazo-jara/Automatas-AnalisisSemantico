@@ -24,31 +24,37 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	}
 
 	Map<String, String> variables = new HashMap<String, String>();
-
+	@Override
 	public Integer visitSuma(ParserTParser.SumaContext ctx){
 		return 0;
 	}
-
+	
+	@Override
 	public Integer visitResta(ParserTParser.RestaContext ctx){
 		return 0;
 	}
 
+	@Override
 	public Integer visitMultiplicacion(ParserTParser.MultiplicacionContext ctx){
 		return 0;
 	}
 
+	@Override
 	public Integer visitDivision(ParserTParser.DivisionContext ctx){
 		return 0;
 	}
 
+	@Override
 	public Integer visitExp(ParserTParser.ExpContext ctx){
 		return 0;
 	}
 
+	@Override
 	public Integer visitCos(ParserTParser.CosContext ctx){
 		return 0;
 	}
 
+	@Override
 	public Integer visitSqrt(ParserTParser.SqrtContext ctx){
 		return 0;
 	}
