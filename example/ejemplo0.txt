@@ -1,7 +1,10 @@
-tomar salida 3 con 20
-corte camino en 4 hacia 5
-realice un recorrido de 50 veces alrededor de 6
-acelera 3 metros
-pasar cambio en 7 kilometros
-derrapar a 20 metros
-derrapar a 100 metros
+bienvenido al gps.
+desde tu ubicacion actual,
+trayecto es 0
+trayecto es tomar salida 3 con 20
+trayecto es corte camino en 4 hacia 5
+trayecto es realice un recorrido de 50 veces alrededor de 6
+trayecto es acelera 3 metros
+trayecto es pasar cambio en 7 kilometros
+trayecto es derrapar a 20 metros
+trayecto es derrapar a 100 metros
