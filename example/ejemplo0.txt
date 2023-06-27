@@ -1,0 +1,7 @@
+tomar salida 3 con 20
+corte camino en 4 hacia 5
+realice un recorrido de 50 veces alrededor de 6
+acelera 3 metros
+pasar cambio en 7 kilometros
+derrapar a 20 metros
+derrapar a 100 metros
