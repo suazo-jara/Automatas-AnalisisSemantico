@@ -30,6 +30,12 @@ public interface ParserTVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInstruccion(ParserTParser.InstruccionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link ParserTParser#declaracion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDeclaracion(ParserTParser.DeclaracionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link ParserTParser#operacion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
