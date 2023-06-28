@@ -28,8 +28,7 @@ EQUAL: 'distancia igual';
 NOTEQUAL: 'distancia diferente';
 
 // Reglas léxicas
-VARNAME: [a-z]+ ;
-CADENA: '"'([(a-z) | (A-Z)]+) '"' ;
+VARNAME: [a-zA-Z]+ ;
 INT: '-'?[0-9]+ ;
 FLOAT: '-'?[0-9]+ '.' [0-9]+;
 WS : [ \t\r\n]+ -> skip;

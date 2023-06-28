@@ -1,5 +1,7 @@
 bienvenido al gps.
 desde tu ubicacion actual,
+preferencias de ruta: (20)
+dirigete al este durante 100 metros
 trayecto es 0
 trayecto es tomar salida 3 con 20
 trayecto es corte camino en 4 hacia 5
@@ -8,3 +10,5 @@ trayecto es acelera 3 metros
 trayecto es pasar cambio en 7 kilometros
 trayecto es derrapar a 20 metros
 trayecto es derrapar a 100 metros
+trayecto es indicaciones de ruta: (hola)
+has llegado a tu destino.
