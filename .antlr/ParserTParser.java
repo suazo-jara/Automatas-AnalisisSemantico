@@ -48,9 +48,10 @@ public class ParserTParser extends Parser {
 			"'preferencias de ruta:'", "'indicaciones de ruta:'", null, null, null, 
 			null, null, "'es'", "'tomar salida'", "'corte camino en'", "'realice un recorrido de'", 
 			"'para llegar a'", "'con'", "'hacia'", "'veces alrededor de'", "'desvia en'", 
-			"'acelera'", "'pasar cambio en'", "'derrapar a'", "'o'", "'y'", "'distancia mayor'", 
-			"'distancia menor'", "'distancia igual'", "'distancia diferente'", "'que'", 
-			"'si'", "'entonces'", "'mientras'", "'conduzca'", "'cuando'", "'.'"
+			"'acelera'", "'pasar cambio en'", "'derrapar a'", "'o'", "'y'", "'es distancia mayor'", 
+			"'es distancia menor'", "'es distancia igual'", "'es distancia diferente'", 
+			"'que'", "'si'", "'entonces'", "'mientras'", "'conduzca'", "'cuando'", 
+			"'.'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();

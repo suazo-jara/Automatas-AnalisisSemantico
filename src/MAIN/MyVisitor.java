@@ -258,22 +258,29 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	// Operaciones lógicas
 	@Override
 	public Integer visitMayor(ParserTParser.MayorContext ctx){
+		System.out.println(ctx.getChild(0).getText() + ">" + ctx.getChild(3).getText());
+		System.out.println(tokenName(ctx.getChild(0)) + "y" + tokenName(ctx.getChild(3)));
 		return visitChildren(ctx);
 	}
 
 	@Override
 	public Integer visitMenor(ParserTParser.MenorContext ctx){
+		System.out.println(ctx.getChild(0).getText() + "<" + ctx.getChild(3).getText());
+		System.out.println(tokenName(ctx.getChild(0)) + "y" + tokenName(ctx.getChild(3)));
 		return visitChildren(ctx);
 	}
 
 	@Override
 	public Integer visitIgual(ParserTParser.IgualContext ctx){
+		System.out.println(ctx.getChild(0).getText() + "==" + ctx.getChild(3).getText());
+		System.out.println(tokenName(ctx.getChild(0)) + "y" + tokenName(ctx.getChild(3)));
 		return visitChildren(ctx);
 	}
 
 	@Override
 	public Integer visitDistinto(ParserTParser.DistintoContext ctx){
-		System.out.println(ctx.getChild(0).getText());
+		System.out.println(ctx.getChild(0).getText() + "!=" + ctx.getChild(3).getText());
+		System.out.println(tokenName(ctx.getChild(0)) + "y" + tokenName(ctx.getChild(3)));
 		return visitChildren(ctx);
 	}
 }
