@@ -257,32 +257,127 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 	// Operaciones lógicas
 	@Override
-	public Integer visitMayor(ParserTParser.MayorContext ctx){
-		System.out.println(ctx.getChild(0).getText() + ">" + ctx.getChild(3).getText());
-		System.out.println(tokenName(ctx.getChild(0)) + "y" + tokenName(ctx.getChild(3)));
+	public Integer visitMayor(ParserTParser.MayorContext ctx) {
+		String value1 = ctx.getChild(0).getText();
+		value1 = variables.get(value1);
+		String value2 = ctx.getChild(3).getText();
+		String measure = ctx.getChild(4).getText();
+
+		System.out.println(value1 + " > " + value2);
+		System.out.println(tokenName(ctx.getChild(0)) + " y " + tokenName(ctx.getChild(3)));
+
+		if ((tokenName(ctx.getChild(0)).equals("INT") || tokenName(ctx.getChild(0)).equals("FLOAT"))
+				&& (tokenName(ctx.getChild(3)).equals("INT") || tokenName(ctx.getChild(3)).equals("FLOAT"))) {
+			float floatValue1 = Float.parseFloat(value1);
+			float floatValue2 = Float.parseFloat(value2);
+			if (floatValue1 > floatValue2) {
+				System.out.println("La condición es verdadera");
+			} else {
+				System.out.println("La condición es falsa");
+			}
+		} else {
+
+			if (value1.compareTo(value2) > 0) {
+				System.out.println("La condición es verdadera");
+			} else {
+				System.out.println("La condición es falsa");
+			}
+		}
+
 		return visitChildren(ctx);
 	}
 
+
+
 	@Override
-	public Integer visitMenor(ParserTParser.MenorContext ctx){
-		System.out.println(ctx.getChild(0).getText() + "<" + ctx.getChild(3).getText());
-		System.out.println(tokenName(ctx.getChild(0)) + "y" + tokenName(ctx.getChild(3)));
+	public Integer visitMenor(ParserTParser.MenorContext ctx) {
+		String value1 = ctx.getChild(0).getText();
+		value1 = variables.get(value1);
+		String value2 = ctx.getChild(3).getText();
+
+		System.out.println(value1 + " < " + value2);
+		System.out.println(tokenName(ctx.getChild(0)) + " y " + tokenName(ctx.getChild(3)));
+
+		if ((tokenName(ctx.getChild(0)).equals("INT") || tokenName(ctx.getChild(0)).equals("FLOAT"))
+				&& (tokenName(ctx.getChild(3)).equals("INT") || tokenName(ctx.getChild(3)).equals("FLOAT"))) {
+			float floatValue1 = Float.parseFloat(value1);
+			float floatValue2 = Float.parseFloat(value2);
+			if (floatValue1 < floatValue2) {
+				System.out.println("La condición es verdadera");
+			} else {
+				System.out.println("La condición es falsa");
+			}
+		} else {
+			if (value1.compareTo(value2) < 0) {
+				System.out.println("La condición es verdadera");
+			} else {
+				System.out.println("La condición es falsa");
+			}
+		}
+
 		return visitChildren(ctx);
 	}
 
+
 	@Override
-	public Integer visitIgual(ParserTParser.IgualContext ctx){
-		System.out.println(ctx.getChild(0).getText() + "==" + ctx.getChild(3).getText());
-		System.out.println(tokenName(ctx.getChild(0)) + "y" + tokenName(ctx.getChild(3)));
+	public Integer visitIgual(ParserTParser.IgualContext ctx) {
+		String value1 = ctx.getChild(0).getText();
+		value1 = variables.get(value1);
+		String value2 = ctx.getChild(3).getText();
+
+		System.out.println(value1 + " == " + value2);
+		System.out.println(tokenName(ctx.getChild(0)) + " y " + tokenName(ctx.getChild(3)));
+
+		if ((tokenName(ctx.getChild(0)).equals("INT") || tokenName(ctx.getChild(0)).equals("FLOAT"))
+				&& (tokenName(ctx.getChild(3)).equals("INT") || tokenName(ctx.getChild(3)).equals("FLOAT"))) {
+			float floatValue1 = Float.parseFloat(value1);
+			float floatValue2 = Float.parseFloat(value2);
+			if (floatValue1 == floatValue2) {
+				System.out.println("La condición es verdadera");
+			} else {
+				System.out.println("La condición es falsa");
+			}
+		} else {
+			if (value1.equals(value2)) {
+				System.out.println("La condición es verdadera");
+			} else {
+				System.out.println("La condición es falsa");
+			}
+		}
+
 		return visitChildren(ctx);
 	}
 
+
 	@Override
-	public Integer visitDistinto(ParserTParser.DistintoContext ctx){
-		System.out.println(ctx.getChild(0).getText() + "!=" + ctx.getChild(3).getText());
-		System.out.println(tokenName(ctx.getChild(0)) + "y" + tokenName(ctx.getChild(3)));
+	public Integer visitDistinto(ParserTParser.DistintoContext ctx) {
+		String value1 = ctx.getChild(0).getText();
+		value1 = variables.get(value1);
+		String value2 = ctx.getChild(3).getText();
+
+		System.out.println(value1 + " != " + value2);
+		System.out.println(tokenName(ctx.getChild(0)) + " y " + tokenName(ctx.getChild(3)));
+
+		if ((tokenName(ctx.getChild(0)).equals("INT") || tokenName(ctx.getChild(0)).equals("FLOAT"))
+				&& (tokenName(ctx.getChild(3)).equals("INT") || tokenName(ctx.getChild(3)).equals("FLOAT"))) {
+			float floatValue1 = Float.parseFloat(value1);
+			float floatValue2 = Float.parseFloat(value2);
+			if (floatValue1 != floatValue2) {
+				System.out.println("La condición es verdadera");
+			} else {
+				System.out.println("La condición es falsa");
+			}
+		} else {
+			if (!value1.equals(value2)) {
+				System.out.println("La condición es verdadera");
+			} else {
+				System.out.println("La condición es falsa");
+			}
+		}
+
 		return visitChildren(ctx);
 	}
+
 }
 
 // 	// Ciclos
