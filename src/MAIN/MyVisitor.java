@@ -48,20 +48,30 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		// Comrpobamos el caso en el que sea un VARNAME, porque se debe comportar distinto.
 		// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
 		if (tokenName(ctx.getChild(2)).equals("VARNAME")) {
+			impresion = variables.get(impresion);
+		} else {
 			System.out.println(impresion);
 		}
-		System.out.println(impresion);
- 
 		return visitChildren(ctx);
 	}
 
 	// Input
 		@Override
 	public Integer visitLectura(ParserTParser.LecturaContext ctx) {
-		String lectura = ctx.getChild(2).getText();
+		String variableObjetivo = ctx.getChild(0).getText();
+		String lectura = ctx.getChild(4).getText();
 
 		// Input debe guardar valores en variables
+		if (tokenName(ctx.getChild(4)).equals("VARNAME")) {
+			lectura = variables.get(lectura);
+			System.out.println(lectura);
+		}
+
+		float variableConLectura = Float.parseFloat(lectura);
+
+		variables.put(variableObjetivo, Float.toString(variableConLectura));
 		System.out.println(lectura);
+		
 		return visitChildren(ctx);
 	}
 
@@ -231,7 +241,6 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		// NO MODIFICAR
 		return visitChildren(ctx);
 	}
-}
 
 // 	// Sentencia lógica
 // 	@Override
@@ -239,32 +248,35 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 // 		return 0;
 // 	}
 
-// 	// Afirmación lógica
-// 	@Override
-// 	public Integer visitAfirmacion(ParserTParser.AfirmacionContext ctx){
-// 		return 0;
-// 	}
+	// Afirmación lógica
+	@Override
+	public Integer visitAfirmacion(ParserTParser.AfirmacionContext ctx){
+		// NO MODIFICAR
+		return visitChildren(ctx);
+	}
 
-// 	// Operaciones lógicas
-// 	@Override
-// 	public Integer visitMayor(ParserTParser.MayorContext ctx){
-// 		return 0;
-// 	}
+	// Operaciones lógicas
+	@Override
+	public Integer visitMayor(ParserTParser.MayorContext ctx){
+		return visitChildren(ctx);
+	}
 
-// 	@Override
-// 	public Integer visitMenor(ParserTParser.MenorContext ctx){
-// 		return 0;
-// 	}
+	@Override
+	public Integer visitMenor(ParserTParser.MenorContext ctx){
+		return visitChildren(ctx);
+	}
 
-// 	@Override
-// 	public Integer visitIgual(ParserTParser.IgualContext ctx){
-// 		return 0;
-// 	}
+	@Override
+	public Integer visitIgual(ParserTParser.IgualContext ctx){
+		return visitChildren(ctx);
+	}
 
-// 	@Override
-// 	public Integer visitDistinto(ParserTParser.DistintoContext ctx){
-// 		return 0;
-// 	}
+	@Override
+	public Integer visitDistinto(ParserTParser.DistintoContext ctx){
+		System.out.println(ctx.getChild(0).getText());
+		return visitChildren(ctx);
+	}
+}
 
 // 	// Ciclos
 // 	@Override

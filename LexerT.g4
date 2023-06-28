@@ -31,10 +31,10 @@ RAIZC : 'derrapar a';
 OR: 'o';
 AND: 'y';
 
-MAYOR: 'distancia mayor';
-MENOR: 'distancia menor';
-EQUAL: 'distancia igual';
-NOTEQUAL: 'distancia diferente';
+MAYOR: 'es distancia mayor';
+MENOR: 'es distancia menor';
+EQUAL: 'es distancia igual';
+NOTEQUAL: 'es distancia diferente';
 THAN: 'que';
 
 IF: 'si';

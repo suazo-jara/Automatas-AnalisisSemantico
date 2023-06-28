@@ -16,7 +16,7 @@ operador : (AND | OR);
 orden : ORDEN;
 sentido : ( SENTIDO | DIRECCION );
 distancia : DISTANCIA (INT | FLOAT) MEDIDA;
-lectura: INPUT PARENTESIS_I (INT | FLOAT | VARNAME) PARENTESIS_D;
+lectura: VARNAME IGUAL INPUT PARENTESIS_I (INT | FLOAT | VARNAME) PARENTESIS_D;
 // ej. preferencias de ruta: (20)
 impresion: OUTPUT PARENTESIS_I (INT | FLOAT | VARNAME) PARENTESIS_D;
 // ej. indicaciones de ruta: (40)
@@ -30,10 +30,10 @@ hacermientras : instruccion HACERMIENTRAS senlogica;
 senlogica : afirmacion ((OR | AND) afirmacion)*;
 afirmacion : mayor | menor | igual | distinto;
 
-mayor : MAYOR THAN INT MEDIDA;
-menor : MENOR THAN INT MEDIDA;
-igual : EQUAL THAN INT MEDIDA;
-distinto : NOTEQUAL THAN INT MEDIDA;
+mayor : (INT | FLOAT | VARNAME) MAYOR THAN (INT | FLOAT | VARNAME) MEDIDA;
+menor : (INT | FLOAT | VARNAME) MENOR THAN (INT | FLOAT | VARNAME) MEDIDA;
+igual : (INT | FLOAT | VARNAME) EQUAL THAN (INT | FLOAT | VARNAME) MEDIDA;
+distinto : (INT | FLOAT | VARNAME) NOTEQUAL THAN (INT | FLOAT | VARNAME) MEDIDA;
 
 suma : VARNAME IGUAL ID_SUMA (INT | FLOAT | VARNAME) SUMA (INT | FLOAT | VARNAME);
 resta : VARNAME IGUAL ID_RESTA (INT | FLOAT | VARNAME) RESTA (INT | FLOAT | VARNAME);
