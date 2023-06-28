@@ -87,7 +87,6 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 			sumaIzquierda = variables.get(sumaIzquierda);
 			System.out.println(sumaIzquierda);
 		}
-
 		tokenName = tokenName(ctx.getChild(5));
 		System.out.println(ctx.getChild(5).getText() + " es " + tokenName);
 		// Si el sumando derecho es una variable, se obtiene su valor en el mapa variables
