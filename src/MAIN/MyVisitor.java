@@ -47,12 +47,10 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 		// Comrpobamos el caso en el que sea un VARNAME, porque se debe comportar distinto.
 		// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
-		String token = tokenName(ctx.getChild(2));
-		if (token != null && token.equals("VARNAME")){
-			System.out.println(variables.get(impresion));
-		} else {
+		if (tokenName(ctx.getChild(2)).equals("VARNAME")) {
 			System.out.println(impresion);
 		}
+		System.out.println(impresion);
  
 		return visitChildren(ctx);
 	}
@@ -62,12 +60,8 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	public Integer visitLectura(ParserTParser.LecturaContext ctx) {
 		String lectura = ctx.getChild(2).getText();
 
-		String tokenName = tokenName(ctx.getChild(2));
-		if (tokenName != null && tokenName.equals("VARNAME")) {
-			System.out.println(variables.get(lectura));
-		} else {
-			System.out.println(lectura);
-		}
+		// Input debe guardar valores en variables
+		System.out.println(lectura);
 		return visitChildren(ctx);
 	}
 
@@ -79,18 +73,13 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		String sumaIzquierda = ctx.getChild(3).getText();
 		String sumaDerecha = ctx.getChild(5).getText();
 
-		// Si el sumando izquierdo es una variable, se obtiene su valor en el mapa variables
-		String tokenName = tokenName(ctx.getChild(3));
-		System.out.println(ctx.getChild(3).getText() + " es " + tokenName);
-
-		if (tokenName != null && tokenName.equals("VARNAME")) {
+		// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
+		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
 			sumaIzquierda = variables.get(sumaIzquierda);
 			System.out.println(sumaIzquierda);
 		}
-		tokenName = tokenName(ctx.getChild(5));
-		System.out.println(ctx.getChild(5).getText() + " es " + tokenName);
-		// Si el sumando derecho es una variable, se obtiene su valor en el mapa variables
-		if (tokenName != null && tokenName.equals("VARNAME")) {
+		// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
+		if (tokenName(ctx.getChild(5)).equals("VARNAME")) {
 			sumaDerecha = variables.get(sumaDerecha);
 			System.out.println(sumaDerecha);
 		}
@@ -99,7 +88,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 		variables.put(variableObjetivo, Float.toString(suma));
 
-		System.out.println(sumaIzquierda + " + " + sumaDerecha + " = " + suma);
+		System.out.println(variableObjetivo + " = " + sumaIzquierda + " + " + sumaDerecha + " = " + suma);
 		return visitChildren(ctx);
 	}
 	
@@ -109,6 +98,17 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		String variableObjetivo = ctx.getChild(0).getText();
 		String restaIzquierda = ctx.getChild(3).getText();
 		String restaDerecha = ctx.getChild(5).getText();
+
+		
+		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
+			restaIzquierda = variables.get(restaIzquierda);
+			System.out.println(restaIzquierda);
+		}
+		
+		if (tokenName(ctx.getChild(5)).equals("VARNAME")) {
+			restaDerecha = variables.get(restaDerecha);
+			System.out.println(restaDerecha);
+		}
 
 		float resta = Float.parseFloat(restaIzquierda) - Float.parseFloat(restaDerecha);
 
@@ -125,6 +125,16 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		String factorIzquierda = ctx.getChild(3).getText();
 		String factorDerecha = ctx.getChild(5).getText();
 
+		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
+			factorIzquierda = variables.get(factorIzquierda);
+			System.out.println(factorIzquierda);
+		}
+
+		if (tokenName(ctx.getChild(5)).equals("VARNAME")) {
+			factorDerecha = variables.get(factorDerecha);
+			System.out.println(factorDerecha);
+		}
+
 		float producto = Float.parseFloat(factorIzquierda) * Float.parseFloat(factorDerecha);
 
 		variables.put(variableObjetivo, Float.toString(producto));
@@ -139,6 +149,16 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		String variableObjetivo = ctx.getChild(0).getText();
 		String dividendo = ctx.getChild(3).getText();
 		String divisor = ctx.getChild(5).getText();
+
+		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
+			dividendo = variables.get(dividendo);
+			System.out.println(dividendo);
+		}
+		
+		if (tokenName(ctx.getChild(5)).equals("VARNAME")) {
+			divisor = variables.get(divisor);
+			System.out.println(divisor);
+		}
 
 		float cociente = Float.parseFloat(dividendo) * Float.parseFloat(divisor);
 
@@ -156,6 +176,11 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		String variableObjetivo = ctx.getChild(0).getText();
 		String potencia = ctx.getChild(3).getText();
 
+		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
+			potencia = variables.get(potencia);
+			System.out.println(potencia);
+		}
+
 		double resultado = Math.exp(Float.parseFloat(potencia));
 
 		variables.put(variableObjetivo, Double.toString(resultado));
@@ -169,6 +194,11 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		String variableObjetivo = ctx.getChild(0).getText();
 		String angulo = ctx.getChild(3).getText();
 
+		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
+			angulo = variables.get(angulo);
+			System.out.println(angulo);
+		}
+
 		double resultado = Math.cos(Float.parseFloat(angulo));
 
 		variables.put(variableObjetivo, Double.toString(resultado));
@@ -181,6 +211,11 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	public Integer visitSqrt(ParserTParser.SqrtContext ctx){
 		String variableObjetivo = ctx.getChild(0).getText();
 		String base = ctx.getChild(3).getText();
+
+		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
+			base = variables.get(base);
+			System.out.println(base);
+		}
 
 		double resultado = Math.sqrt(Float.parseFloat(base));
 

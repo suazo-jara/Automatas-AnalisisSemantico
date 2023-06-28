@@ -1,4 +1,4 @@
-// Generated from c:\Users\maste\Documents\GitHub\Automatas-AnalisisSemantico\ParserT.g4 by ANTLR 4.9.2
+// Generated from e:\\OneDrive - mail.pucv.cl\\7mo semestre\\ICI4242-1 (autómatas)\\proyecto\\entrega final\\Automatas-AnalisisSemantico\\ParserT.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
