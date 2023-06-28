@@ -1,8 +1,8 @@
 lexer grammar LexerT;
 
 // Tokens
-BEGINGPS: 'bienvenido al gps.';
-END: 'has llegado a tu destino.';
+BEGINGPS: 'bienvenido al gps';
+END: 'has llegado a tu destino';
 BEGIN: 'desde tu ubicacion actual,';
 
 INPUT: 'preferencias de ruta:';
@@ -13,7 +13,16 @@ DIRECCION :( 'al norte' | 'al sur' | 'al este' | 'al oeste' | 'recto');
 DISTANCIA : ( 'durante' | 'en' );
 SENTIDO : ( 'a la derecha' | 'a la izquierda' );
 MEDIDA : ( 'kilometros' | 'metros' | 'kilometro' | 'metro' );
-PUNTO : '.';
+
+IGUAL: 'es';
+ID_SUMA: 'tomar salida';
+ID_RESTA: 'corte camino en';
+ID_MULT: 'realice un recorrido de';
+ID_DIV: 'para llegar a';
+SUMA: 'con';
+RESTA: 'hacia';
+MULT: 'veces alrededor de';
+DIV: 'desvia en';
 
 EXPONENCIAL : 'acelera';
 COSENO : 'pasar cambio en';
@@ -26,8 +35,18 @@ MAYOR: 'distancia mayor';
 MENOR: 'distancia menor';
 EQUAL: 'distancia igual';
 NOTEQUAL: 'distancia diferente';
+THAN: 'que';
+
+IF: 'si';
+THEN: 'entonces';
+MIENTRAS: 'mientras';
+DO: 'conduzca';
+HACERMIENTRAS: 'cuando';
 
 // Reglas léxicas
+PUNTO: '.';
+PARENTESIS_I: ('(');
+PARENTESIS_D: (')');
 VARNAME: [a-zA-Z]+ ;
 INT: '-'?[0-9]+ ;
 FLOAT: '-'?[0-9]+ '.' [0-9]+;

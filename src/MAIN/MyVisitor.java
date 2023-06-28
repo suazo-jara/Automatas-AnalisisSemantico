@@ -47,23 +47,23 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 		// Comrpobamos el caso en el que sea un VARNAME, porque se debe comportar distinto.
 		// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
-		if (tokenName(ctx.getChild(2)).equals("VARNAME")){
+		String token = tokenName(ctx.getChild(2));
+		if (token != null && token.equals("VARNAME")){
 			System.out.println(variables.get(impresion));
 		} else {
 			System.out.println(impresion);
 		}
+ 
 		return visitChildren(ctx);
 	}
 
 	// Input
-	@Override
-	public Integer visitLectura(ParserTParser.LecturaContext ctx){
-		// Obtenemos lo que se necesita del print
+		@Override
+	public Integer visitLectura(ParserTParser.LecturaContext ctx) {
 		String lectura = ctx.getChild(2).getText();
 
-		// Comrpobamos el caso en el que sea un VARNAME, porque se debe comportar distinto.
-		// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
-		if (tokenName(ctx.getChild(2)).equals("VARNAME")){
+		String tokenName = tokenName(ctx.getChild(2));
+		if (tokenName != null && tokenName.equals("VARNAME")) {
 			System.out.println(variables.get(lectura));
 		} else {
 			System.out.println(lectura);
@@ -79,16 +79,22 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		String sumaIzquierda = ctx.getChild(3).getText();
 		String sumaDerecha = ctx.getChild(5).getText();
 
-		// // Si el sumando izquierdo es una variable, se obtiene su valor en el mapa variables
-		// if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
-		// 	sumaIzquierda = variables.get(sumaIzquierda);
-		// 	System.out.println(sumaIzquierda);
-		// }
-		// // Si el sumando derecho es una variable, se obtiene su valor en el mapa variables
-		// if (tokenName(ctx.getChild(5)).equals("VARNAME")) {
-		// 	sumaDerecha = variables.get(sumaDerecha);
-		// 	System.out.println(sumaDerecha);
-		// }
+		// Si el sumando izquierdo es una variable, se obtiene su valor en el mapa variables
+		String tokenName = tokenName(ctx.getChild(3));
+		System.out.println(ctx.getChild(3).getText() + " es " + tokenName);
+
+		if (tokenName != null && tokenName.equals("VARNAME")) {
+			sumaIzquierda = variables.get(sumaIzquierda);
+			System.out.println(sumaIzquierda);
+		}
+
+		tokenName = tokenName(ctx.getChild(5));
+		System.out.println(ctx.getChild(5).getText() + " es " + tokenName);
+		// Si el sumando derecho es una variable, se obtiene su valor en el mapa variables
+		if (tokenName != null && tokenName.equals("VARNAME")) {
+			sumaDerecha = variables.get(sumaDerecha);
+			System.out.println(sumaDerecha);
+		}
 
 		float suma = Float.parseFloat(sumaIzquierda) + Float.parseFloat(sumaDerecha);
 
