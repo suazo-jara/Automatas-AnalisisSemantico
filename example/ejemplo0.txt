@@ -2,7 +2,8 @@ bienvenido al gps.
 desde tu ubicacion actual,
 preferencias de ruta: (20)
 dirigete al este durante 100 metros
-trayecto es 0
+trayecto es 20
+hola es 0
 trayecto es tomar salida 3 con 20
 trayecto es corte camino en 4 hacia 5
 trayecto es realice un recorrido de 50 veces alrededor de 6

@@ -39,17 +39,37 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		return visitChildren(ctx);
 	}
 
-	// // Print
-	// @Override
-	// public Integer visitImpresion(ParserTParser.ImpresionContext ctx){
-	// 	return 0;
-	// }
+	// Print
+	@Override
+	public Integer visitImpresion(ParserTParser.ImpresionContext ctx){
+		// Obtenemos lo que se necesita del print
+		String impresion = ctx.getChild(2).getText();
 
-	// // Input
-	// @Override
-	// public Integer visitLectura(ParserTParser.LecturaContext ctx){
-	// 	return 0;
-	// }
+		// Comrpobamos el caso en el que sea un VARNAME, porque se debe comportar distinto.
+		// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
+		if (tokenName(ctx.getChild(2)).equals("VARNAME")){
+			System.out.println(variables.get(impresion));
+		} else {
+			System.out.println(impresion);
+		}
+		return visitChildren(ctx);
+	}
+
+	// Input
+	@Override
+	public Integer visitLectura(ParserTParser.LecturaContext ctx){
+		// Obtenemos lo que se necesita del print
+		String lectura = ctx.getChild(2).getText();
+
+		// Comrpobamos el caso en el que sea un VARNAME, porque se debe comportar distinto.
+		// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
+		if (tokenName(ctx.getChild(2)).equals("VARNAME")){
+			System.out.println(variables.get(lectura));
+		} else {
+			System.out.println(lectura);
+		}
+		return visitChildren(ctx);
+	}
 
 	// Operaciones matemáticas
 	@Override
@@ -128,12 +148,12 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	@Override
 	public Integer visitExp(ParserTParser.ExpContext ctx){
 		// Obtenemos las variables
-		//String variableObjetivo = ctx.getChild(0).getText();
-		String potencia = ctx.getChild(1).getText();
+		String variableObjetivo = ctx.getChild(0).getText();
+		String potencia = ctx.getChild(3).getText();
 
 		double resultado = Math.exp(Float.parseFloat(potencia));
 
-		//variables.put(variableObjetivo, Double.toString(resultado));
+		variables.put(variableObjetivo, Double.toString(resultado));
 
 		System.out.println("exp" + "(" + potencia + ") = " + resultado);
 		return visitChildren(ctx);
@@ -141,12 +161,12 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 	@Override
 	public Integer visitCos(ParserTParser.CosContext ctx){
-		//String variableObjetivo = ctx.getChild(0).getText();
-		String angulo = ctx.getChild(1).getText();
+		String variableObjetivo = ctx.getChild(0).getText();
+		String angulo = ctx.getChild(3).getText();
 
 		double resultado = Math.cos(Float.parseFloat(angulo));
 
-		//variables.put(variableObjetivo, Double.toString(resultado));
+		variables.put(variableObjetivo, Double.toString(resultado));
 
 		System.out.println("cos" + "(" + angulo + ") = " + resultado);
 		return visitChildren(ctx);
@@ -154,12 +174,12 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 	@Override
 	public Integer visitSqrt(ParserTParser.SqrtContext ctx){
-		//String variableObjetivo = ctx.getChild(0).getText();
-		String base = ctx.getChild(1).getText();
+		String variableObjetivo = ctx.getChild(0).getText();
+		String base = ctx.getChild(3).getText();
 
 		double resultado = Math.sqrt(Float.parseFloat(base));
 
-		//variables.put(variableObjetivo, Double.toString(resultado));
+		variables.put(variableObjetivo, Double.toString(resultado));
 
 		System.out.println("sqrt" + "(" + base + ") = " + resultado);
 		return visitChildren(ctx);
