@@ -40,6 +40,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		// Las ponemos en el diccionario
 		variables.put(varname, value);
 		System.out.println(varname + " es " + value);
+		System.out.println((tokenName(ctx.getChild(0))) + " es " + tokenName(ctx.getChild(2)));
 
 		return visitChildren(ctx);
 	}
@@ -57,6 +58,8 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 			impresion = variables.get(impresion);
 		}
 			System.out.println(impresion);
+			System.out.println(tokenName(ctx.getChild(2)));
+
 		return visitChildren(ctx);
 	}
 
@@ -76,7 +79,9 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		float variableConLectura = Float.parseFloat(lectura);
 
 		variables.put(variableObjetivo, Float.toString(variableConLectura));
+
 		System.out.println(lectura);
+		System.out.println(tokenName(ctx.getChild(4)));
 		
 		return visitChildren(ctx);
 	}
@@ -106,6 +111,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		variables.put(variableObjetivo, Float.toString(suma));
 
 		System.out.println(variableObjetivo + " = " + sumaIzquierda + " + " + sumaDerecha + " = " + suma);
+		System.out.println(tokenName(ctx.getChild(0)) + " = " + tokenName(ctx.getChild(3)) + " + " + tokenName(ctx.getChild(5)) + " = " + tokenName(ctx.getChild(5)));
 		return visitChildren(ctx);
 	}
 	
@@ -133,6 +139,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		variables.put(variableObjetivo, Float.toString(resta));
 
 		System.out.println(restaIzquierda + " - " + restaDerecha + " = " + resta);
+		System.out.println(tokenName(ctx.getChild(0)) + " - " + tokenName(ctx.getChild(3)) + " = " + tokenName(ctx.getChild(5)));
 		return visitChildren(ctx);
 	}
 
@@ -159,6 +166,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		variables.put(variableObjetivo, Float.toString(producto));
 
 		System.out.println(factorIzquierda + " * " + factorDerecha + " = " + producto);
+		System.out.println(tokenName(ctx.getChild(0)) + " * " + tokenName(ctx.getChild(3)) + " = " + tokenName(ctx.getChild(5)));
 		return visitChildren(ctx);
 	}
 
@@ -180,11 +188,12 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 			//System.out.println(divisor);
 		}
 
-		float cociente = Float.parseFloat(dividendo) * Float.parseFloat(divisor);
+		float cociente = Float.parseFloat(dividendo) / Float.parseFloat(divisor);
 
 		variables.put(variableObjetivo, Float.toString(cociente));
 
 		System.out.println(dividendo + " / " + divisor + " = " + cociente);
+		System.out.println(tokenName(ctx.getChild(0)) + " / " + tokenName(ctx.getChild(3)) + " = " + tokenName(ctx.getChild(5)));
 		return visitChildren(ctx);
 	}
 
@@ -207,6 +216,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		variables.put(variableObjetivo, Double.toString(resultado));
 
 		System.out.println("exp" + "(" + potencia + ") = " + resultado);
+		System.out.println("exp" + "(" + tokenName(ctx.getChild(3)) + ") = DOUBLE");
 		return visitChildren(ctx);
 	}
 
@@ -226,6 +236,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		variables.put(variableObjetivo, Double.toString(resultado));
 
 		System.out.println("cos" + "(" + angulo + ") = " + resultado);
+		System.out.println("cos" + "(" + tokenName(ctx.getChild(3)) + ") = DOUBLE");
 		return visitChildren(ctx);
 	}
 
@@ -245,6 +256,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		variables.put(variableObjetivo, Double.toString(resultado));
 
 		System.out.println("sqrt" + "(" + base + ") = " + resultado);
+		System.out.println("sqrt" + "(" + tokenName(ctx.getChild(3)) + ") = DOUBLE");
 		return visitChildren(ctx);
 	}
 
@@ -275,8 +287,6 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		String value1 = ctx.getChild(0).getText();
 		String value2 = ctx.getChild(3).getText();
 
-		System.out.println(tokenName(ctx.getChild(0)) + " y " + tokenName(ctx.getChild(3)));
-
 		if (tokenName(ctx.getChild(0)).equals("VARNAME")) {
 			value1 = variables.get(value1);
 		}
@@ -287,8 +297,10 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 		System.out.println(value1 + " > " + value2);
 		if ((Float.parseFloat(value1)) > Float.parseFloat(value2)) {
+			System.out.println(tokenName(ctx.getChild(0)) + " > " + tokenName(ctx.getChild(3)));
 			System.out.println("La condición es verdadera");
 		} else {
+			System.out.println(tokenName(ctx.getChild(0)) + " > " + tokenName(ctx.getChild(3)));
 			System.out.println("La condición es falsa");
 		}
 		return visitChildren(ctx);
@@ -300,7 +312,6 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		String value1 = ctx.getChild(0).getText();
 		String value2 = ctx.getChild(3).getText();
 
-		System.out.println(tokenName(ctx.getChild(0)) + " y " + tokenName(ctx.getChild(3)));
 
 		if (tokenName(ctx.getChild(0)).equals("VARNAME")) {
 			value1 = variables.get(value1);
@@ -312,8 +323,10 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 		System.out.println(value1 + " < " + value2);
 		if ((Float.parseFloat(value1)) < Float.parseFloat(value2)) {
+			System.out.println(tokenName(ctx.getChild(0)) + " < " + tokenName(ctx.getChild(3)));
 			System.out.println("La condición es verdadera");
 		} else {
+			System.out.println(tokenName(ctx.getChild(0)) + " < " + tokenName(ctx.getChild(3)));
 			System.out.println("La condición es falsa");
 		}
 		return visitChildren(ctx);
@@ -325,7 +338,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		String value1 = ctx.getChild(0).getText();
 		String value2 = ctx.getChild(3).getText();
 
-		System.out.println(tokenName(ctx.getChild(0)) + " y " + tokenName(ctx.getChild(3)));
+		
 
 		if (tokenName(ctx.getChild(0)).equals("VARNAME")) {
 			value1 = variables.get(value1);
@@ -337,8 +350,10 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 		System.out.println(value1 + " == " + value2);
 		if ((Float.parseFloat(value1)) == Float.parseFloat(value2)) {
+			System.out.println(tokenName(ctx.getChild(0)) + " == " + tokenName(ctx.getChild(3)));
 			System.out.println("La condición es verdadera");
 		} else {
+			System.out.println(tokenName(ctx.getChild(0)) + " == " + tokenName(ctx.getChild(3)));
 			System.out.println("La condición es falsa");
 		}
 		return visitChildren(ctx);
@@ -350,7 +365,6 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		String value1 = ctx.getChild(0).getText();
 		String value2 = ctx.getChild(3).getText();
 
-		System.out.println(tokenName(ctx.getChild(0)) + " y " + tokenName(ctx.getChild(3)));
 
 		if (tokenName(ctx.getChild(0)).equals("VARNAME")) {
 			value1 = variables.get(value1);
@@ -362,8 +376,10 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 		System.out.println(value1 + " != " + value2);
 		if ((Float.parseFloat(value1)) != Float.parseFloat(value2)) {
+			System.out.println(tokenName(ctx.getChild(0)) + " != " + tokenName(ctx.getChild(3)));
 			System.out.println("La condición es verdadera");
 		} else {
+			System.out.println(tokenName(ctx.getChild(0)) + " != " + tokenName(ctx.getChild(3)));
 			System.out.println("La condición es falsa");
 		}
 		return visitChildren(ctx);
@@ -517,57 +533,58 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		return 0;
 	}
 
-	@Override
-	public Integer visitHacermientras(ParserTParser.HacermientrasContext ctx) {
-		System.out.println("\nCICLO HACER-MIENTRAS:");
+	// @Override
+	// public Integer visitHacermientras(ParserTParser.HacermientrasContext ctx) {
+	// 	System.out.println("\nCICLO HACER-MIENTRAS:");
 
-		boolean afirm;
+	// 	boolean afirm;
 
-		do {
-			afirm = true;
+	// 	do {
+	// 		afirm = true;
 
-			// Procesar la instrucción
-			visitInstruccion(ctx.instruccion());
+	// 		// Procesar la instrucción
+	// 		visitInstruccion(ctx.instruccion());
 
-			// Obtener la sentencia lógica
-			ParserTParser.SenlogicaContext senlogicaContext = ctx.senlogica();
-			String sentenciaLogica = senlogicaContext.getText();
-			System.out.println("Sentencia lógica: " + sentenciaLogica);
+	// 		// Obtener la sentencia lógica
+	// 		ParserTParser.SenlogicaContext senlogicaContext = ctx.senlogica();
+	// 		String sentenciaLogica = senlogicaContext.getText();
+	// 		System.out.println("Sentencia lógica: " + sentenciaLogica);
 
-			for (int i = 0; i < senlogicaContext.getChildCount(); i += 2) {
-				ParserTParser.AfirmacionContext afirmacionContext = senlogicaContext.afirmacion(i / 2);
-				String operator = tokenName(afirmacionContext.getChild(1));
-				String var1 = afirmacionContext.getChild(0).getText();
-				String var2 = afirmacionContext.getChild(2).getText();
-				System.out.println(i + " " + operator + " " + var1 + " " + var2);
+	// 		for (int i = 0; i < senlogicaContext.getChildCount(); i += 2) {
+	// 			ParserTParser.AfirmacionContext afirmacionContext = senlogicaContext.afirmacion(i / 2);
+	// 			String operator = tokenName(afirmacionContext.getChild(1));
+	// 			String var1 = afirmacionContext.getChild(0).getText();
+	// 			String var2 = afirmacionContext.getChild(2).getText();
+	// 			System.out.println(i + " " + operator + " " + var1 + " " + var2);
 
-				if (tokenName(afirmacionContext.getChild(0)).equals("VARNAME")) {
-					var1 = variables.get(var1);
-				}
-				if (tokenName(afirmacionContext.getChild(2)).equals("VARNAME")) {
-					var2 = variables.get(var2);
-				}
+	// 			if (tokenName(afirmacionContext.getChild(0)).equals("VARNAME")) {
+	// 				var1 = variables.get(var1);
+	// 			}
+	// 			if (tokenName(afirmacionContext.getChild(2)).equals("VARNAME")) {
+	// 				var2 = variables.get(var2);
+	// 			}
 
-				if (operator.equals("MAYOR")) {
-					afirm = afirm && (Float.parseFloat(var1) > Float.parseFloat(var2));
-				} else if (operator.equals("MENOR")) {
-					afirm = afirm && (Float.parseFloat(var1) < Float.parseFloat(var2));
-				} else if (operator.equals("EQUAL")) {
-					afirm = afirm && (Float.parseFloat(var1) == Float.parseFloat(var2));
-				} else if (operator.equals("NOTEQUAL")) {
-					afirm = afirm && (Float.parseFloat(var1) != Float.parseFloat(var2));
-				}
-			}
-		} while (afirm);
+	// 			if (operator.equals("MAYOR")) {
+	// 				afirm = afirm && (Float.parseFloat(var1) > Float.parseFloat(var2));
+	// 			} else if (operator.equals("MENOR")) {
+	// 				afirm = afirm && (Float.parseFloat(var1) < Float.parseFloat(var2));
+	// 			} else if (operator.equals("EQUAL")) {
+	// 				afirm = afirm && (Float.parseFloat(var1) == Float.parseFloat(var2));
+	// 			} else if (operator.equals("NOTEQUAL")) {
+	// 				afirm = afirm && (Float.parseFloat(var1) != Float.parseFloat(var2));
+	// 			}
+	// 		}
+	// 	} while (afirm);
 
-		return 0;
-	}
+	// 	return 0;
+	// }
 
 	// Otras definiciones
 	@Override
 	public Integer visitDistancia(ParserTParser.DistanciaContext ctx){
 		System.out.println("\nDISTANCIA:");
 		System.out.println(ctx.getChild(0).getText() + " " + ctx.getChild(1).getText() + " " + ctx.getChild(2).getText());
+		System.out.println(tokenName(ctx.getChild(0)) + " " + tokenName(ctx.getChild(1)) + " " + tokenName(ctx.getChild(2)));
 		return visitChildren(ctx);
 	}
 
@@ -575,6 +592,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	public Integer visitSentido(ParserTParser.SentidoContext ctx){
 		System.out.println("\nSENTIDO:");
 		System.out.println(ctx.getChild(0).getText());
+		System.out.println(tokenName(ctx.getChild(0)));
 		return visitChildren(ctx);
 	}
 
@@ -582,6 +600,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	public Integer visitOrden(ParserTParser.OrdenContext ctx){
 		System.out.println("\nORDEN:");
 		System.out.println(ctx.getChild(0).getText());
+		System.out.println(tokenName(ctx.getChild(0)));
 		return visitChildren(ctx);
 	}
 }
