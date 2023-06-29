@@ -17,7 +17,7 @@ indicaciones de ruta: (hola)
 mientras trayecto distancia mayor que 500 metros y trayecto distancia menor que 20 metros conduzca sigue a la derecha durante 20 metros
 dirigete a la derecha en 2 kilometro o sigue recto durante 300 metros
 trayecto es 10
-mientras trayecto distancia igual que 10 conduzca trayecto2 es preferencias de ruta: (20) trayecto es 0
+mientras trayecto distancia igual que 10 conduzca trayecto es 0 variable es preferencias de ruta: (20) trayecto es 0
 si trayecto distancia igual que 1 kilometro y trayecto distancia menor que 20 metros entonces continua al norte durante 300 metros
 gira a la izquierda en 200 metros y continua recto durante 200 metros
 dirigete al este en 4 kilometros cuando trayecto distancia menor que 40 metros

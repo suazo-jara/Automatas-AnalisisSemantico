@@ -521,26 +521,26 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	public Integer visitHacermientras(ParserTParser.HacermientrasContext ctx){
 		return visitChildren(ctx);
 	}
+
+	// Otras definiciones
+	@Override
+	public Integer visitDistancia(ParserTParser.DistanciaContext ctx){
+		System.out.println("\nDISTANCIA:");
+		System.out.println(ctx.getChild(0).getText() + " " + ctx.getChild(1).getText() + " " + ctx.getChild(2).getText());
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Integer visitSentido(ParserTParser.SentidoContext ctx){
+		System.out.println("\nSENTIDO:");
+		System.out.println(ctx.getChild(0).getText());
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Integer visitOrden(ParserTParser.OrdenContext ctx){
+		System.out.println("\nORDEN:");
+		System.out.println(ctx.getChild(0).getText());
+		return visitChildren(ctx);
+	}
 }
-
-// 	// Otras definiciones
-// 	@Override
-// 	public Integer visitDistancia(ParserTParser.DistanciaContext ctx){
-// 		return 0;
-// 	}
-
-// 	@Override
-// 	public Integer visitSentido(ParserTParser.SentidoContext ctx){
-// 		return 0;
-// 	}
-
-// 	@Override
-// 	public Integer visitOrden(ParserTParser.OrdenContext ctx){
-// 		return 0;
-// 	}
-
-// 	@Override
-// 	public Integer visitOperador(ParserTParser.OperadorContext ctx){
-// 		return 0;
-// 	}
-// }
