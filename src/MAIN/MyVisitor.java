@@ -394,6 +394,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		for (int i = 0, j = 1; i < ctx.getChildCount(); i += 2, j++){
 			afirmSentencia = ctx.getChild(i).getChild(0).getChild(0).getText() + " " + ctx.getChild(i).getChild(0).getChild(1).getText() + " " + ctx.getChild(i).getChild(0).getChild(2).getText() + " " + ctx.getChild(i).getChild(0).getChild(3).getText() + " " + ctx.getChild(i).getChild(0).getChild(4).getText(); 
 			System.out.println(j + "a " + tokenName(ctx.getChild(i)) + ": " + afirmSentencia);
+			System.out.println(j + "a " + tokenName(ctx.getChild(i)) + ": " + tokenName(ctx.getChild(i).getChild(0).getChild(0)) + " " + tokenName(ctx.getChild(i).getChild(0).getChild(1)) + " " + tokenName(ctx.getChild(i).getChild(0).getChild(2)) + " " + tokenName(ctx.getChild(i).getChild(0).getChild(3)) + " " + tokenName(ctx.getChild(i).getChild(0).getChild(4)));
 		}
 		return visitChildren(ctx);
 	}
