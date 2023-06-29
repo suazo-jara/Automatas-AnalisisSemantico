@@ -13,7 +13,7 @@ si trayecto distancia mayor que 5 kilometros entonces continua al norte durante 
 gira a la izquierda en 500 metros
 trayecto es derrapar a 100 metros
 indicaciones de ruta: (hola)
-mientras trayecto distancia mayor que 500 metros conduzca sigue a la derecha durante 20 metros
+mientras trayecto distancia mayor que 500 metros y trayecto distancia menor que 20 metros conduzca sigue a la derecha durante 20 metros
 dirigete a la derecha en 2 kilometro o sigue recto durante 300 metros
 si trayecto distancia igual que 1 kilometro entonces continua al norte durante 300 metros
 gira a la izquierda en 200 metros y continua recto durante 200 metros

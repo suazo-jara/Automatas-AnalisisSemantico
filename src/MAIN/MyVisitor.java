@@ -259,147 +259,158 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	@Override
 	public Integer visitMayor(ParserTParser.MayorContext ctx) {
 		String value1 = ctx.getChild(0).getText();
-		value1 = variables.get(value1);
 		String value2 = ctx.getChild(3).getText();
-		String measure = ctx.getChild(4).getText();
 
-		System.out.println(value1 + " > " + value2);
 		System.out.println(tokenName(ctx.getChild(0)) + " y " + tokenName(ctx.getChild(3)));
 
-		if ((tokenName(ctx.getChild(0)).equals("INT") || tokenName(ctx.getChild(0)).equals("FLOAT"))
-				&& (tokenName(ctx.getChild(3)).equals("INT") || tokenName(ctx.getChild(3)).equals("FLOAT"))) {
-			float floatValue1 = Float.parseFloat(value1);
-			float floatValue2 = Float.parseFloat(value2);
-			if (floatValue1 > floatValue2) {
-				System.out.println("La condición es verdadera");
-			} else {
-				System.out.println("La condición es falsa");
-			}
-		} else {
-
-			if (value1.compareTo(value2) > 0) {
-				System.out.println("La condición es verdadera");
-			} else {
-				System.out.println("La condición es falsa");
-			}
+		if (tokenName(ctx.getChild(0)).equals("VARNAME")) {
+			value1 = variables.get(value1);
 		}
 
+		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
+			value2 = variables.get(value2);
+		}
+
+		System.out.println(value1 + " > " + value2);
+		if ((Float.parseFloat(value1)) > Float.parseFloat(value2)) {
+			System.out.println("La condición es verdadera");
+		} else {
+			System.out.println("La condición es falsa");
+		}
 		return visitChildren(ctx);
 	}
-
-
 
 	@Override
 	public Integer visitMenor(ParserTParser.MenorContext ctx) {
 		String value1 = ctx.getChild(0).getText();
-		value1 = variables.get(value1);
 		String value2 = ctx.getChild(3).getText();
 
-		System.out.println(value1 + " < " + value2);
 		System.out.println(tokenName(ctx.getChild(0)) + " y " + tokenName(ctx.getChild(3)));
 
-		if ((tokenName(ctx.getChild(0)).equals("INT") || tokenName(ctx.getChild(0)).equals("FLOAT"))
-				&& (tokenName(ctx.getChild(3)).equals("INT") || tokenName(ctx.getChild(3)).equals("FLOAT"))) {
-			float floatValue1 = Float.parseFloat(value1);
-			float floatValue2 = Float.parseFloat(value2);
-			if (floatValue1 < floatValue2) {
-				System.out.println("La condición es verdadera");
-			} else {
-				System.out.println("La condición es falsa");
-			}
-		} else {
-			if (value1.compareTo(value2) < 0) {
-				System.out.println("La condición es verdadera");
-			} else {
-				System.out.println("La condición es falsa");
-			}
+		if (tokenName(ctx.getChild(0)).equals("VARNAME")) {
+			value1 = variables.get(value1);
 		}
 
+		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
+			value2 = variables.get(value2);
+		}
+
+		System.out.println(value1 + " < " + value2);
+		if ((Float.parseFloat(value1)) < Float.parseFloat(value2)) {
+			System.out.println("La condición es verdadera");
+		} else {
+			System.out.println("La condición es falsa");
+		}
 		return visitChildren(ctx);
 	}
-
 
 	@Override
 	public Integer visitIgual(ParserTParser.IgualContext ctx) {
 		String value1 = ctx.getChild(0).getText();
-		value1 = variables.get(value1);
 		String value2 = ctx.getChild(3).getText();
 
-		System.out.println(value1 + " == " + value2);
 		System.out.println(tokenName(ctx.getChild(0)) + " y " + tokenName(ctx.getChild(3)));
 
-		if ((tokenName(ctx.getChild(0)).equals("INT") || tokenName(ctx.getChild(0)).equals("FLOAT"))
-				&& (tokenName(ctx.getChild(3)).equals("INT") || tokenName(ctx.getChild(3)).equals("FLOAT"))) {
-			float floatValue1 = Float.parseFloat(value1);
-			float floatValue2 = Float.parseFloat(value2);
-			if (floatValue1 == floatValue2) {
-				System.out.println("La condición es verdadera");
-			} else {
-				System.out.println("La condición es falsa");
-			}
-		} else {
-			if (value1.equals(value2)) {
-				System.out.println("La condición es verdadera");
-			} else {
-				System.out.println("La condición es falsa");
-			}
+		if (tokenName(ctx.getChild(0)).equals("VARNAME")) {
+			value1 = variables.get(value1);
 		}
 
+		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
+			value2 = variables.get(value2);
+		}
+
+		System.out.println(value1 + " == " + value2);
+		if ((Float.parseFloat(value1)) == Float.parseFloat(value2)) {
+			System.out.println("La condición es verdadera");
+		} else {
+			System.out.println("La condición es falsa");
+		}
 		return visitChildren(ctx);
 	}
-
 
 	@Override
 	public Integer visitDistinto(ParserTParser.DistintoContext ctx) {
 		String value1 = ctx.getChild(0).getText();
-		value1 = variables.get(value1);
 		String value2 = ctx.getChild(3).getText();
 
-		System.out.println(value1 + " != " + value2);
 		System.out.println(tokenName(ctx.getChild(0)) + " y " + tokenName(ctx.getChild(3)));
 
-		if ((tokenName(ctx.getChild(0)).equals("INT") || tokenName(ctx.getChild(0)).equals("FLOAT"))
-				&& (tokenName(ctx.getChild(3)).equals("INT") || tokenName(ctx.getChild(3)).equals("FLOAT"))) {
-			float floatValue1 = Float.parseFloat(value1);
-			float floatValue2 = Float.parseFloat(value2);
-			if (floatValue1 != floatValue2) {
-				System.out.println("La condición es verdadera");
-			} else {
-				System.out.println("La condición es falsa");
-			}
-		} else {
-			if (!value1.equals(value2)) {
-				System.out.println("La condición es verdadera");
-			} else {
-				System.out.println("La condición es falsa");
-			}
+		if (tokenName(ctx.getChild(0)).equals("VARNAME")) {
+			value1 = variables.get(value1);
 		}
 
+		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
+			value2 = variables.get(value2);
+		}
+
+		System.out.println(value1 + " != " + value2);
+		if ((Float.parseFloat(value1)) != Float.parseFloat(value2)) {
+			System.out.println("La condición es verdadera");
+		} else {
+			System.out.println("La condición es falsa");
+		}
 		return visitChildren(ctx);
 	}
 
+	public Integer visitSenlogica(ParserTParser.SenlogicaContext ctx){
+		String sentenciaLogica = ctx.getText();
+		System.out.println("Sentencia : " + sentenciaLogica);
+		for (int i = 0; i < ctx.getChildCount(); i += 2){
+			System.out.println(i + " " + tokenName(ctx.getChild(i)) + " " + ctx.getChild(i).getText());
+		}
+		return visitChildren(ctx);
+	}
+
+	// Ciclos
+	@Override
+	public Integer visitCiclo(ParserTParser.CicloContext ctx){
+		// NO MODIFICAR
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Integer visitSi(ParserTParser.SiContext ctx){
+		// Guardamos la afirmación para poder hacerle los cambios de ser necesarios
+		// (aquí no lo fue, es un "True" o "False")
+		// String afirmacion = ctx.getChild(1).getText();
+		// System.out.println(tokenName(ctx.getChild(1)) + " : " + afirmacion);
+
+		// // Se obtiene una lista de todos los statements en la frase.
+		// List<Object> lista = new ArrayList<>();
+		// for (int i = 0; i < ctx.getChildCount(); i++) {
+		// 	// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
+		// 	if (tokenName(ctx.getChild(i)).equals("Statement")){
+		// 		lista.add(ctx.getChild(i));
+		// 	}
+		// }
+
+		// // Se confirma la validez de la afirmación.
+		// // Es bastante probable que en su implementación aquí se deban hacer pasos adicionales.
+		// // En este caso es sencillo ya que la afirmación solo puede ser "True" o "False" 
+		// if (afirmacion.equals("True")){
+		// 	// Esta es solamente una forma abreviada de recorrer una lista
+		// 	// Recorranla como mejor sepan hacerlo.
+		// 	for (Object statement : lista){
+		// 		// visitStatement recibe un objeto del tipo StatementContext.
+		// 		// De ser necesario hagan un casteo.
+		// 		visitStatement((StatementContext) statement);
+		// 	}
+		// }
+		// // Fijese que como recorremos "a mano" los statements, no es necesario invocar a visitChildren(ctx);
+		// // (sin embargo tenemos que retornar un entero)
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Integer visitMientras(ParserTParser.MientrasContext ctx){
+		return visitChildren(ctx);
+	}
+
+	@Override
+	public Integer visitHacermientras(ParserTParser.HacermientrasContext ctx){
+		return visitChildren(ctx);
+	}
 }
-
-// 	// Ciclos
-// 	@Override
-// 	public Integer visitCiclo(ParserTParser.CicloContext ctx){
-// 		return 0;
-// 	}
-
-// 	@Override
-// 	public Integer visitSi(ParserTParser.SiContext ctx){
-// 		return 0;
-// 	}
-
-// 	@Override
-// 	public Integer visitMientras(ParserTParser.MientrasContext ctx){
-// 		return 0;
-// 	}
-
-// 	@Override
-// 	public Integer visitHacermientras(ParserTParser.HacermientrasContext ctx){
-// 		return 0;
-// 	}
 
 // 	// Otras definiciones
 // 	@Override
