@@ -47,6 +47,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	// Print
 	@Override
 	public Integer visitImpresion(ParserTParser.ImpresionContext ctx){
+		System.out.println("\nIMPRESION:");
 		// Obtenemos lo que se necesita del print
 		String impresion = ctx.getChild(2).getText();
 
@@ -54,15 +55,15 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
 		if (tokenName(ctx.getChild(2)).equals("VARNAME")) {
 			impresion = variables.get(impresion);
-		} else {
-			System.out.println(impresion);
 		}
+			System.out.println(impresion);
 		return visitChildren(ctx);
 	}
 
 	// Input
 		@Override
 	public Integer visitLectura(ParserTParser.LecturaContext ctx) {
+		System.out.println("\nLECTURA:");
 		String variableObjetivo = ctx.getChild(0).getText();
 		String lectura = ctx.getChild(4).getText();
 
@@ -370,11 +371,13 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 	public Integer visitSenlogica(ParserTParser.SenlogicaContext ctx){
 		System.out.println("\nSENTENCIA LÓGICA:");
-		String sentenciaLogica = ctx.getText();
-		System.out.println("Sentencia : " + sentenciaLogica);
-		System.out.println("Cantidad de afirmaciones: " + (ctx.getChildCount()/3 + 1));
-		for (int i = 0; i < ctx.getChildCount(); i += 2){
-			System.out.println(i + " " + tokenName(ctx.getChild(i)) + " " + ctx.getChild(i).getText());
+		String afirmSentencia;
+		//System.out.println(ctx.getChild(0).getChild(0).getChild(1).getText());
+		//System.out.println("Sentencia : " + ctx.getChild(0).getText() + " < " + ctx.getChild(2).getText());
+		System.out.println("Cantidad de afirmaciones en la sentencia: " + (ctx.getChildCount()/3 + 1));
+		for (int i = 0, j = 1; i < ctx.getChildCount(); i += 2, j++){
+			afirmSentencia = ctx.getChild(i).getChild(0).getChild(0).getText() + " " + ctx.getChild(i).getChild(0).getChild(1).getText() + " " + ctx.getChild(i).getChild(0).getChild(2).getText() + " " + ctx.getChild(i).getChild(0).getChild(3).getText() + " " + ctx.getChild(i).getChild(0).getChild(4).getText(); 
+			System.out.println(j + "a " + tokenName(ctx.getChild(i)) + ": " + afirmSentencia);
 		}
 		return visitChildren(ctx);
 	}
@@ -431,27 +434,87 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 		if (afirm) {
 			System.out.println(afirm);
-			// Se confirma la validez de la afirmación.
-			// Es bastante probable que en su implementación aquí se deban hacer pasos
-			// adicionales.
-			// En este caso es sencillo ya que la afirmación solo puede ser "True" o "False"
-			// Esta es solamente una forma abreviada de recorrer una lista
-			// Recorranla como mejor sepan hacerlo.
+
 			for (Object statement : lista) {
-				// visitStatement recibe un objeto del tipo StatementContext.
-				// De ser necesario hagan un casteo.
 				visitInstrucciones((InstruccionesContext) statement);
 			}
-			// Fijese que como recorremos "a mano" los statements, no es necesario invocar a
-			// visitChildren(ctx);
-			// (sin embargo tenemos que retornar un entero)
 		}
 		return 0;
 	}
 
 	@Override
-	public Integer visitMientras(ParserTParser.MientrasContext ctx){
-		return visitChildren(ctx);
+	public Integer visitMientras(ParserTParser.MientrasContext ctx) {
+		System.out.println("\nCICLO MIENTRAS:");
+
+		String var1 = ctx.getChild(1).getChild(0).getChild(0).getChild(0).getText();
+		String var2 = ctx.getChild(1).getChild(0).getChild(0).getChild(3).getText();
+		boolean afirm = true;
+
+		System.out.println(var1 + " " + ctx.getChild(1).getChild(0).getChild(0).getChild(1).getText() + " que " + var2);
+
+		if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(0)).equals("VARNAME")) {
+			var1 = variables.get(var1);
+		}
+		if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(3)).equals("VARNAME")) {
+			var2 = variables.get(var2);
+		}
+
+		System.out.println(var1);
+		System.out.println(var2);
+		System.out.println(tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)));
+
+		if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)).equals("MAYOR")) {
+			afirm = Float.parseFloat(var1) > Float.parseFloat(var2);
+		}
+		if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)).equals("MENOR")) {
+			afirm = Float.parseFloat(var1) < Float.parseFloat(var2);
+		}
+		if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)).equals("EQUAL")) {
+			afirm = Float.parseFloat(var1) == Float.parseFloat(var2);
+		}
+		if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)).equals("NOTEQUAL")) {
+			afirm = Float.parseFloat(var1) != Float.parseFloat(var2);
+		}
+
+		while (afirm) {
+			List<Object> lista = new ArrayList<>();
+			for (int i = 0; i < ctx.getChildCount(); i++) {
+				if (tokenName(ctx.getChild(i)).equals("Instrucciones")) {
+					lista.add(ctx.getChild(i));
+				}
+			}
+
+			for (Object statement : lista) {
+				visitInstrucciones((InstruccionesContext) statement);
+			}
+
+			// Reevaluar la condición para determinar si se debe continuar con el bucle
+			var1 = ctx.getChild(1).getChild(0).getChild(0).getChild(0).getText();
+			var2 = ctx.getChild(1).getChild(0).getChild(0).getChild(3).getText();
+
+			if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(0)).equals("VARNAME")) {
+				var1 = variables.get(var1);
+			}
+			if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(3)).equals("VARNAME")) {
+				var2 = variables.get(var2);
+			}
+
+			if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)).equals("MAYOR")) {
+				afirm = Float.parseFloat(var1) > Float.parseFloat(var2);
+			}
+			if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)).equals("MENOR")) {
+			afirm = Float.parseFloat(var1) < Float.parseFloat(var2);
+			}
+			if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)).equals("EQUAL")) {
+				afirm = Float.parseFloat(var1) == Float.parseFloat(var2);
+			}
+			if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)).equals("NOTEQUAL")) {
+				afirm = Float.parseFloat(var1) != Float.parseFloat(var2);
+			}
+		}
+		System.out.println("FIN DEL CICLO MIENTRAS");
+
+		return 0;
 	}
 
 	@Override
