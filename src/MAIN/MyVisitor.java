@@ -518,8 +518,49 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	}
 
 	@Override
-	public Integer visitHacermientras(ParserTParser.HacermientrasContext ctx){
-		return visitChildren(ctx);
+	public Integer visitHacermientras(ParserTParser.HacermientrasContext ctx) {
+		System.out.println("\nCICLO HACER-MIENTRAS:");
+
+		boolean afirm;
+
+		do {
+			afirm = true;
+
+			// Procesar la instrucción
+			visitInstruccion(ctx.instruccion());
+
+			// Obtener la sentencia lógica
+			ParserTParser.SenlogicaContext senlogicaContext = ctx.senlogica();
+			String sentenciaLogica = senlogicaContext.getText();
+			System.out.println("Sentencia lógica: " + sentenciaLogica);
+
+			for (int i = 0; i < senlogicaContext.getChildCount(); i += 2) {
+				ParserTParser.AfirmacionContext afirmacionContext = senlogicaContext.afirmacion(i / 2);
+				String operator = tokenName(afirmacionContext.getChild(1));
+				String var1 = afirmacionContext.getChild(0).getText();
+				String var2 = afirmacionContext.getChild(2).getText();
+				System.out.println(i + " " + operator + " " + var1 + " " + var2);
+
+				if (tokenName(afirmacionContext.getChild(0)).equals("VARNAME")) {
+					var1 = variables.get(var1);
+				}
+				if (tokenName(afirmacionContext.getChild(2)).equals("VARNAME")) {
+					var2 = variables.get(var2);
+				}
+
+				if (operator.equals("MAYOR")) {
+					afirm = afirm && (Float.parseFloat(var1) > Float.parseFloat(var2));
+				} else if (operator.equals("MENOR")) {
+					afirm = afirm && (Float.parseFloat(var1) < Float.parseFloat(var2));
+				} else if (operator.equals("EQUAL")) {
+					afirm = afirm && (Float.parseFloat(var1) == Float.parseFloat(var2));
+				} else if (operator.equals("NOTEQUAL")) {
+					afirm = afirm && (Float.parseFloat(var1) != Float.parseFloat(var2));
+				}
+			}
+		} while (afirm);
+
+		return 0;
 	}
 
 	// Otras definiciones
