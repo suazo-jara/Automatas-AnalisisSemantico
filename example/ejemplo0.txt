@@ -1,6 +1,7 @@
 bienvenido al gps
 
 desde tu ubicacion actual, dirigete al este durante 100 metros
+trayecto es 10
 gira a la derecha en 2 kilometros
 continua al norte durante 300 metros
 trayecto es corte camino en 4 hacia 5
@@ -15,7 +16,7 @@ trayecto es derrapar a 100 metros
 indicaciones de ruta: (hola)
 mientras trayecto distancia mayor que 500 metros y trayecto distancia menor que 20 metros conduzca sigue a la derecha durante 20 metros
 dirigete a la derecha en 2 kilometro o sigue recto durante 300 metros
-si trayecto distancia igual que 1 kilometro entonces continua al norte durante 300 metros
+si trayecto distancia igual que 1 kilometro y trayecto distancia menor que 20 metros entonces continua al norte durante 300 metros
 gira a la izquierda en 200 metros y continua recto durante 200 metros
 dirigete al este en 4 kilometros cuando trayecto distancia menor que 40 metros
 trayecto es tomar salida 3 con 20

@@ -1,6 +1,9 @@
 package MAIN;
 
 import java.util.*;
+
+import javax.print.event.PrintEvent;
+
 import java.lang.Math;
 
 import org.antlr.v4.runtime.RuleContext;
@@ -11,6 +14,7 @@ import ANTLR.ParserTBaseVisitor;
 import ANTLR.ParserTParser;
 import ANTLR.ParserTParser.OperacionContext;
 import ANTLR.ParserTParser.FuncionContext;
+import ANTLR.ParserTParser.InstruccionesContext;
 
 public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
@@ -28,6 +32,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	// Declaración
 	@Override
 	public Integer visitDeclaracion(ParserTParser.DeclaracionContext ctx) {
+		System.out.println("\nDECLARACIÓN:");	
 		// Obtenemos las variables
 		String varname = ctx.getChild(0).getText();
 		String value = ctx.getChild(2).getText();
@@ -78,6 +83,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	// Operaciones matemáticas
 	@Override
 	public Integer visitSuma(ParserTParser.SumaContext ctx){
+		System.out.println("\nSUMA:");
 		// Obtenemos las variables
 		String variableObjetivo = ctx.getChild(0).getText();
 		String sumaIzquierda = ctx.getChild(3).getText();
@@ -86,12 +92,12 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
 		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
 			sumaIzquierda = variables.get(sumaIzquierda);
-			System.out.println(sumaIzquierda);
+			//System.out.println(sumaIzquierda);
 		}
 		// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
 		if (tokenName(ctx.getChild(5)).equals("VARNAME")) {
 			sumaDerecha = variables.get(sumaDerecha);
-			System.out.println(sumaDerecha);
+			//System.out.println(sumaDerecha);
 		}
 
 		float suma = Float.parseFloat(sumaIzquierda) + Float.parseFloat(sumaDerecha);
@@ -104,6 +110,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	
 	@Override
 	public Integer visitResta(ParserTParser.RestaContext ctx){
+		System.out.println("\nRESTA:");
 		// Obtenemos las variables
 		String variableObjetivo = ctx.getChild(0).getText();
 		String restaIzquierda = ctx.getChild(3).getText();
@@ -112,12 +119,12 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 		
 		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
 			restaIzquierda = variables.get(restaIzquierda);
-			System.out.println(restaIzquierda);
+			//System.out.println(restaIzquierda);
 		}
 		
 		if (tokenName(ctx.getChild(5)).equals("VARNAME")) {
 			restaDerecha = variables.get(restaDerecha);
-			System.out.println(restaDerecha);
+			//System.out.println(restaDerecha);
 		}
 
 		float resta = Float.parseFloat(restaIzquierda) - Float.parseFloat(restaDerecha);
@@ -130,6 +137,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 	@Override
 	public Integer visitMultiplicacion(ParserTParser.MultiplicacionContext ctx){
+		System.out.println("\nMULTIPLICACIÓN:");
 		// Obtenemos las variables
 		String variableObjetivo = ctx.getChild(0).getText();
 		String factorIzquierda = ctx.getChild(3).getText();
@@ -137,12 +145,12 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
 			factorIzquierda = variables.get(factorIzquierda);
-			System.out.println(factorIzquierda);
+			//System.out.println(factorIzquierda);
 		}
 
 		if (tokenName(ctx.getChild(5)).equals("VARNAME")) {
 			factorDerecha = variables.get(factorDerecha);
-			System.out.println(factorDerecha);
+			//System.out.println(factorDerecha);
 		}
 
 		float producto = Float.parseFloat(factorIzquierda) * Float.parseFloat(factorDerecha);
@@ -155,6 +163,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 	@Override
 	public Integer visitDivision(ParserTParser.DivisionContext ctx){
+		System.out.println("\nDIVISIÓN:");
 		// Obtenemos las variables
 		String variableObjetivo = ctx.getChild(0).getText();
 		String dividendo = ctx.getChild(3).getText();
@@ -162,12 +171,12 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
 			dividendo = variables.get(dividendo);
-			System.out.println(dividendo);
+			//System.out.println(dividendo);
 		}
 		
 		if (tokenName(ctx.getChild(5)).equals("VARNAME")) {
 			divisor = variables.get(divisor);
-			System.out.println(divisor);
+			//System.out.println(divisor);
 		}
 
 		float cociente = Float.parseFloat(dividendo) * Float.parseFloat(divisor);
@@ -182,13 +191,14 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	// Funciones matemáticas
 	@Override
 	public Integer visitExp(ParserTParser.ExpContext ctx){
+		System.out.println("\nEXPONENCIAL:");
 		// Obtenemos las variables
 		String variableObjetivo = ctx.getChild(0).getText();
 		String potencia = ctx.getChild(3).getText();
 
 		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
 			potencia = variables.get(potencia);
-			System.out.println(potencia);
+			//System.out.println(potencia);
 		}
 
 		double resultado = Math.exp(Float.parseFloat(potencia));
@@ -201,12 +211,13 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 	@Override
 	public Integer visitCos(ParserTParser.CosContext ctx){
+		System.out.println("\nCOSENO:");
 		String variableObjetivo = ctx.getChild(0).getText();
 		String angulo = ctx.getChild(3).getText();
 
 		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
 			angulo = variables.get(angulo);
-			System.out.println(angulo);
+			//System.out.println(angulo);
 		}
 
 		double resultado = Math.cos(Float.parseFloat(angulo));
@@ -219,12 +230,13 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 	@Override
 	public Integer visitSqrt(ParserTParser.SqrtContext ctx){
+		System.out.println("\nSQRT:");
 		String variableObjetivo = ctx.getChild(0).getText();
 		String base = ctx.getChild(3).getText();
 
 		if (tokenName(ctx.getChild(3)).equals("VARNAME")) {
 			base = variables.get(base);
-			System.out.println(base);
+			//System.out.println(base);
 		}
 
 		double resultado = Math.sqrt(Float.parseFloat(base));
@@ -258,6 +270,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	// Operaciones lógicas
 	@Override
 	public Integer visitMayor(ParserTParser.MayorContext ctx) {
+		System.out.println("\nMAYOR:");
 		String value1 = ctx.getChild(0).getText();
 		String value2 = ctx.getChild(3).getText();
 
@@ -282,6 +295,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 	@Override
 	public Integer visitMenor(ParserTParser.MenorContext ctx) {
+		System.out.println("\nMENOR:");
 		String value1 = ctx.getChild(0).getText();
 		String value2 = ctx.getChild(3).getText();
 
@@ -306,6 +320,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 	@Override
 	public Integer visitIgual(ParserTParser.IgualContext ctx) {
+		System.out.println("\nIGUAL:");
 		String value1 = ctx.getChild(0).getText();
 		String value2 = ctx.getChild(3).getText();
 
@@ -330,6 +345,7 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 	@Override
 	public Integer visitDistinto(ParserTParser.DistintoContext ctx) {
+		System.out.println("\nDISTINTO:");
 		String value1 = ctx.getChild(0).getText();
 		String value2 = ctx.getChild(3).getText();
 
@@ -353,8 +369,10 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 	}
 
 	public Integer visitSenlogica(ParserTParser.SenlogicaContext ctx){
+		System.out.println("\nSENTENCIA LÓGICA:");
 		String sentenciaLogica = ctx.getText();
 		System.out.println("Sentencia : " + sentenciaLogica);
+		System.out.println("Cantidad de afirmaciones: " + (ctx.getChildCount()/3 + 1));
 		for (int i = 0; i < ctx.getChildCount(); i += 2){
 			System.out.println(i + " " + tokenName(ctx.getChild(i)) + " " + ctx.getChild(i).getText());
 		}
@@ -370,35 +388,65 @@ public class MyVisitor extends ParserTBaseVisitor<Integer> {
 
 	@Override
 	public Integer visitSi(ParserTParser.SiContext ctx){
+		System.out.println("\nCICLO SI:");
 		// Guardamos la afirmación para poder hacerle los cambios de ser necesarios
 		// (aquí no lo fue, es un "True" o "False")
-		// String afirmacion = ctx.getChild(1).getText();
-		// System.out.println(tokenName(ctx.getChild(1)) + " : " + afirmacion);
+		String var1 = ctx.getChild(1).getChild(0).getChild(0).getChild(0).getText();
+		String var2 = ctx.getChild(1).getChild(0).getChild(0).getChild(3).getText();
+		boolean afirm = true;
 
-		// // Se obtiene una lista de todos los statements en la frase.
-		// List<Object> lista = new ArrayList<>();
-		// for (int i = 0; i < ctx.getChildCount(); i++) {
-		// 	// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
-		// 	if (tokenName(ctx.getChild(i)).equals("Statement")){
-		// 		lista.add(ctx.getChild(i));
-		// 	}
-		// }
+		System.out.println(var1 + " " + ctx.getChild(1).getChild(0).getChild(0).getChild(1).getText() + " que " + var2); 
 
-		// // Se confirma la validez de la afirmación.
-		// // Es bastante probable que en su implementación aquí se deban hacer pasos adicionales.
-		// // En este caso es sencillo ya que la afirmación solo puede ser "True" o "False" 
-		// if (afirmacion.equals("True")){
-		// 	// Esta es solamente una forma abreviada de recorrer una lista
-		// 	// Recorranla como mejor sepan hacerlo.
-		// 	for (Object statement : lista){
-		// 		// visitStatement recibe un objeto del tipo StatementContext.
-		// 		// De ser necesario hagan un casteo.
-		// 		visitStatement((StatementContext) statement);
-		// 	}
-		// }
-		// // Fijese que como recorremos "a mano" los statements, no es necesario invocar a visitChildren(ctx);
-		// // (sin embargo tenemos que retornar un entero)
-		return visitChildren(ctx);
+		if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(0)).equals("VARNAME")) {
+			var1 = variables.get(var1);
+		}
+		if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(3)).equals("VARNAME")) {
+			var2 = variables.get(var2);
+		}
+
+		System.out.println(var1);
+		System.out.println(var2);
+		System.out.println(tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)));
+		if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)).equals("MAYOR")){
+			afirm = Float.parseFloat(var1) > Float.parseFloat(var2);
+		}
+		if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)).equals("MENOR")){
+			afirm = Float.parseFloat(var1) < Float.parseFloat(var2);
+		}
+		if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)).equals("EQUAL")){
+			afirm = Float.parseFloat(var1) == Float.parseFloat(var2);
+		}
+		if (tokenName(ctx.getChild(1).getChild(0).getChild(0).getChild(1)).equals("NOTEQUAL")){
+			afirm = Float.parseFloat(var1) != Float.parseFloat(var2);
+		}
+
+		List<Object> lista = new ArrayList<>();
+		for (int i = 0; i < ctx.getChildCount(); i++) {
+			// Cuidado que para comparar Strings en Java es recomendable usar el metodo .equals()
+			if (tokenName(ctx.getChild(i)).equals("Instrucciones")){
+				lista.add(ctx.getChild(i));
+				//System.out.println("INSTRUCCIÓN DENTRO DE IF N." + i + " " + ctx.getChild(i).getText());
+			}
+		}
+
+		if (afirm) {
+			System.out.println(afirm);
+			// Se confirma la validez de la afirmación.
+			// Es bastante probable que en su implementación aquí se deban hacer pasos
+			// adicionales.
+			// En este caso es sencillo ya que la afirmación solo puede ser "True" o "False"
+			// Esta es solamente una forma abreviada de recorrer una lista
+			// Recorranla como mejor sepan hacerlo.
+			for (Object statement : lista) {
+				// visitStatement recibe un objeto del tipo StatementContext.
+				// De ser necesario hagan un casteo.
+				visitInstrucciones((InstruccionesContext) statement);
+			}
+			// Fijese que como recorremos "a mano" los statements, no es necesario invocar a
+			// visitChildren(ctx);
+			// (sin embargo tenemos que retornar un entero)
+		}
+		return 0;
 	}
 
 	@Override
